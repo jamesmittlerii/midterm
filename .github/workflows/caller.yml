@@ -1,0 +1,22 @@
+name: Shared IOS build/test/deploy Workflow
+
+permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+concurrency:
+  group: ${{ github.repository}}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  call-reusable-workflow:
+    uses: jamesmittlerii/workflows/.github/workflows/iosnotest_bw.yml@main # Or a specific commit SHA or tag
+    secrets: inherit
