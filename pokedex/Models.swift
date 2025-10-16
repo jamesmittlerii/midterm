@@ -11,7 +11,7 @@ struct Pokedex: Decodable {
     let pokemon: [Pokemon]
 }
 
-struct Pokemon: Decodable, Identifiable {
+struct Pokemon: Decodable, Identifiable, Hashable {
     let id: Int
     let num: String
     let name: String
@@ -49,9 +49,18 @@ struct Pokemon: Decodable, Identifiable {
         case prevEvolution = "prev_evolution"
         case nextEvolution = "next_evolution"
     }
+
+    // Hashable and Equatable based on stable unique id
+    static func == (lhs: Pokemon, rhs: Pokemon) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
-struct Evolution: Decodable {
+struct Evolution: Decodable, Hashable {
     let num: String
     let name: String
 }
