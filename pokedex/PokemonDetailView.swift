@@ -14,6 +14,7 @@ struct PokemonDetailView: View {
         Dictionary(uniqueKeysWithValues: allPokemon.map { ($0.num, $0) })
     }
 
+
     // Choose one evolution based on direction rule
     private func selectedEvolution(for evolutions: [Evolution], direction: EvolutionDirection) -> Evolution? {
         switch direction {
@@ -63,6 +64,7 @@ struct PokemonDetailView: View {
             .padding(.top, 8)
         }
     }
+<<<<<<< HEAD
     
     // Reusable image loader for Pokémon images
     @ViewBuilder
@@ -89,15 +91,22 @@ struct PokemonDetailView: View {
             }
         }
     }
+=======
+>>>>>>> temp-merge
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+<<<<<<< HEAD
                 // Detail image (up to 300x300 and expand horizontally)
                 pokemonAsyncImage(url: pokemon.img, maxWidth: .infinity, maxHeight: 300)
                     .frame(maxWidth: .infinity)
 
                 // show the name and type
+=======
+                PokemonDetailImage(url: pokemon.img)
+
+>>>>>>> temp-merge
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("#\(pokemon.num)")
@@ -129,7 +138,11 @@ struct PokemonDetailView: View {
                     }
                     .font(.body)
 
+<<<<<<< HEAD
                     // Evolution sections if needed
+=======
+                    // Evolution sections combined via helper
+>>>>>>> temp-merge
                     evolutionSection(title: "Previous Evolution", evolutions: pokemon.prevEvolution, direction: .previous)
                     evolutionSection(title: "Next Evolution", evolutions: pokemon.nextEvolution, direction: .next)
                 }
@@ -142,3 +155,31 @@ struct PokemonDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+<<<<<<< HEAD
+=======
+
+#Preview {
+    PokemonDetailView(
+        pokemon: Pokemon(
+            id: 1,
+            num: "001",
+            name: "Bulbasaur",
+            img: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")!,
+            type: ["Grass", "Poison"],
+            height: "0.7 m",
+            weight: "6.9 kg",
+            candy: "Bulbasaur Candy",
+            candyCount: 25,
+            egg: "2 km",
+            spawnChance: 0.69,
+            avgSpawns: 69.0,
+            spawnTime: "20:00",
+            multipliers: [1.58],
+            weaknesses: ["Fire", "Ice", "Flying", "Psychic"],
+            prevEvolution: nil,
+            nextEvolution: [Evolution(num: "002", name: "Ivysaur")]
+        ),
+        allPokemon: []
+    )
+}
+>>>>>>> temp-merge
