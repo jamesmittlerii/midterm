@@ -1,9 +1,11 @@
-import SwiftUI
+//
+//  PokemonDetailView.swift
+//  pokedex
+//
+//  Created by cisstudent on 10/16/25.
+//
 
-private enum EvolutionDirection {
-    case previous
-    case next
-}
+import SwiftUI
 
 struct PokemonDetailView: View {
     let pokemon: Pokemon
@@ -14,6 +16,11 @@ struct PokemonDetailView: View {
         Dictionary(uniqueKeysWithValues: allPokemon.map { ($0.num, $0) })
     }
 
+    // which direction are we evolving
+    private enum EvolutionDirection {
+        case previous
+        case next
+    }
 
     // Choose one evolution based on direction rule
     private func selectedEvolution(for evolutions: [Evolution], direction: EvolutionDirection) -> Evolution? {
@@ -64,49 +71,12 @@ struct PokemonDetailView: View {
             .padding(.top, 8)
         }
     }
-<<<<<<< HEAD
-    
-    // Reusable image loader for Pokémon images
-    @ViewBuilder
-    private func pokemonAsyncImage(url: URL, maxWidth: CGFloat? = nil, maxHeight: CGFloat? = nil, fixedWidth: CGFloat? = nil, fixedHeight: CGFloat? = nil) -> some View {
-        let secureURL = httpsURL(url)
-        AsyncImage(url: secureURL) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-                    .frame(width: fixedWidth, height: fixedHeight)
-                    .frame(maxWidth: maxWidth, maxHeight: maxHeight)
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: fixedWidth, height: fixedHeight)
-                    .frame(maxWidth: maxWidth, maxHeight: maxHeight)
-            case .failure:
-                Color.gray
-                    .frame(width: fixedWidth, height: fixedHeight)
-                    .frame(maxWidth: maxWidth, maxHeight: maxHeight)
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-=======
->>>>>>> temp-merge
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-<<<<<<< HEAD
-                // Detail image (up to 300x300 and expand horizontally)
-                pokemonAsyncImage(url: pokemon.img, maxWidth: .infinity, maxHeight: 300)
-                    .frame(maxWidth: .infinity)
-
-                // show the name and type
-=======
                 PokemonDetailImage(url: pokemon.img)
 
->>>>>>> temp-merge
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("#\(pokemon.num)")
@@ -138,11 +108,7 @@ struct PokemonDetailView: View {
                     }
                     .font(.body)
 
-<<<<<<< HEAD
-                    // Evolution sections if needed
-=======
                     // Evolution sections combined via helper
->>>>>>> temp-merge
                     evolutionSection(title: "Previous Evolution", evolutions: pokemon.prevEvolution, direction: .previous)
                     evolutionSection(title: "Next Evolution", evolutions: pokemon.nextEvolution, direction: .next)
                 }
@@ -155,8 +121,6 @@ struct PokemonDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-<<<<<<< HEAD
-=======
 
 #Preview {
     PokemonDetailView(
@@ -182,4 +146,3 @@ struct PokemonDetailView: View {
         allPokemon: []
     )
 }
->>>>>>> temp-merge
