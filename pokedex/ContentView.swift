@@ -13,6 +13,8 @@
  
  There was a little extra data about what Pokémon evolve into what so I added that as an additional navigation link.
  
+ Once I finished the main project I decided to add a filter/dropdown for the type. Just for fun, but seemed to work.
+ 
  This is the main grid view.
     
  _Italic text_
