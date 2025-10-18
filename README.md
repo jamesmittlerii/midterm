@@ -8,7 +8,9 @@ The rest of the project was very similar to the food menu homework.
 
 There was a little extra data about what Pokémon evolve into what so I added that as an additional navigation link.
 
+To use this app, scroll the grid, pick a pokemon and you'll see the detail. If a pokemon has evolution, you can click those links too.
 
+At the top of the main grid there is a filter if you want to filter the grid to a specific type of Pokemon. See the video for a run through.
 
 
 https://github.com/user-attachments/assets/3a2932df-b2fb-4e19-856c-fa0dccc68e7c
