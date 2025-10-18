@@ -1,9 +1,17 @@
-//
-//  PokemonDetailView.swift
-//  pokedex
-//
-//  Created by cisstudent on 10/16/25.
-//
+/**
+
+ * __Midterm Project__
+ * Jim Mittler
+ * 17 October 2025
+
+ 
+This is the detail view - a pokemon and the details with a larger image
+    
+ _Italic text_
+ __Bold text__
+ ~~Strikethrough text~~
+
+ */
 
 import SwiftUI
 
@@ -72,9 +80,11 @@ struct PokemonDetailView: View {
         }
     }
 
+    // here is where our layout starts
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                // the picture - we use a helper function to load
                 PokemonDetailImage(url: pokemon.img)
 
                 VStack(alignment: .leading, spacing: 10) {
@@ -108,7 +118,7 @@ struct PokemonDetailView: View {
                     }
                     .font(.body)
 
-                    // Evolution sections combined via helper
+                    // evolution links go here via helper function
                     evolutionSection(title: "Previous Evolution", evolutions: pokemon.prevEvolution, direction: .previous)
                     evolutionSection(title: "Next Evolution", evolutions: pokemon.nextEvolution, direction: .next)
                 }
@@ -122,6 +132,7 @@ struct PokemonDetailView: View {
     }
 }
 
+// lets show a preview with some canned data
 #Preview {
     PokemonDetailView(
         pokemon: Pokemon(

@@ -1,9 +1,17 @@
-//
-//  pokedexTests.swift
-//  pokedexTests
-//
-//  Created by cisstudent on 10/16/25.
-//
+/**
+
+ * __Midterm Project__
+ * Jim Mittler
+ * 17 October 2025
+
+ 
+Not used
+ 
+ _Italic text_
+ __Bold text__
+ ~~Strikethrough text~~
+
+ */
 
 import XCTest
 @testable import pokedex

@@ -1,11 +1,21 @@
-//
-//  Models.swift
-//  pokedex
-//
-//  Created by cisstudent on 10/16/25.
-//
+/**
+
+ * __Midterm Project__
+ * Jim Mittler
+ * 17 October 2025
+
+ 
+This is the json data model
+    
+ _Italic text_
+ __Bold text__
+ ~~Strikethrough text~~
+
+ */
 
 import Foundation
+
+// main structure is an array of pokemon
 
 struct Pokedex: Decodable {
     let pokemon: [Pokemon]
@@ -33,6 +43,7 @@ struct Pokemon: Decodable, Identifiable, Hashable {
     
 
     // Hashable and Equatable based on stable unique id
+    // we do this for a little performance boost. id makes a pokemon unique
     static func == (lhs: Pokemon, rhs: Pokemon) -> Bool {
         lhs.id == rhs.id
     }
@@ -42,6 +53,7 @@ struct Pokemon: Decodable, Identifiable, Hashable {
     }
 }
 
+// the evolution data structure
 struct Evolution: Decodable, Hashable {
     let num: String
     let name: String

@@ -6,8 +6,26 @@
 //  Copyright © 2019 Hacking with Swift. All rights reserved.
 //
 
+/**
+
+ * __Midterm Project__
+ * Jim Mittler
+ * 17 October 2025
+
+ 
+Helper functions go here
+    
+ _Italic text_
+ __Bold text__
+ ~~Strikethrough text~~
+
+ */
+
 import UIKit
 import SwiftUI
+
+// this will import the json into a swift data structure
+// not too bad, but nothing beats javascript for this
 
 extension Bundle {
     func decode<T: Decodable>(_ type: T.Type, from file: String) -> T {
@@ -31,9 +49,9 @@ extension Bundle {
     }
 }
 
-// MARK: - SwiftUI Async Image Helpers
 
-// Normalizes an http URL to https.
+// the urls in the json file are "http" but IOS complains if you don't provide HTTPS
+// so we have a little function to swizzle the URL to HTTPS (thankfully that works)
 private func normalizedHTTPS(from url: URL) -> URL {
     var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
     if components?.scheme?.lowercased() == "http" {
@@ -56,8 +74,12 @@ func RemoteAsyncImage(
     maxSize: CGSize? = nil,
     placeholderSize: CGSize
 ) -> some View {
+    
+    // get an HTTPS url
     let imageURL = normalizedHTTPS(from: url)
 
+    // load the image - quite easy but you have to deal with the phases because of async
+    
     AsyncImage(url: imageURL) { phase in
         switch phase {
         case .empty:
@@ -91,6 +113,9 @@ func RemoteAsyncImage(
         }
     }
 }
+
+// a couple of helper functions to size the images
+// we were asked to make the detail image larger
 
 /// Convenience for the 80x80 grid thumbnail.
 @ViewBuilder

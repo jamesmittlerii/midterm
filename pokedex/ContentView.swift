@@ -1,9 +1,25 @@
-//
-//  ContentView.swift
-//  pokedex
-//
-//  Created by cisstudent on 10/16/25.
-//
+/**
+
+ * __Midterm Project__
+ * Jim Mittler
+ * 17 October 2025
+
+ 
+ For this project I found a json containing a list of the original 151 Pokémon. The json contains the name, a url to the image and some basic details.
+
+ Instead of loading each image into the asset catalog I decided to just load the images dynamically.
+
+ The rest of the project was very similar to the food menu homework.
+
+ There was a little extra data about what Pokémon evolve into what so I added that as an additional navigation link.
+ 
+ This is the main grid view.
+    
+ _Italic text_
+ __Bold text__
+ ~~Strikethrough text~~
+
+ */
 
 import SwiftUI
 
@@ -18,14 +34,19 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Group {
+                // we load the pokedex to start so I guess check if it's ok
                 if let pokedex {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 16) {
+                            // the foreach as requested to loop through our pokemon
                             ForEach(pokedex.pokemon) { pokemon in
                                 NavigationLink {
+                                    // our nav sends us to the detail
                                     PokemonDetailView(pokemon: pokemon, allPokemon: pokedex.pokemon)
                                 } label: {
                                     VStack(spacing: 8) {
+                                        
+                                        // heres the image (small) via helper function
                                         PokemonGridImage(url: pokemon.img)
 
                                         Text(pokemon.name)
@@ -51,12 +72,14 @@ struct ContentView: View {
             .navigationTitle("Pokédex")
         }
         .onAppear {
+            // load the json from the asset catalog onAppear
             let decoded: Pokedex = Bundle.main.decode(Pokedex.self, from: "pokedex")
             self.pokedex = decoded
         }
     }
 }
 
+// do a preview
 #Preview {
     ContentView()
 }
